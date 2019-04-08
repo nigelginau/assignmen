@@ -11,16 +11,14 @@ user_input = str(input('>>')).upper()
 
 while user_input != "Q":
     # Counter
-
-    len_list = str(csv_file_name.readline())
+    len_list = str(csv_file_name.readlines())
     length_of_list = len(len_list)
-    list_of_places = list_of_places + 1
     if user_input == "L":
-        # for i in range(0, length_of_list):
-        # read_list_of_places = str(csv_file_name.readlines())
-        print(len_list)
+        for i in range(1, length_of_list + 1):
+            read_list_of_places = str(csv_file_name.readlines())
+            print(read_list_of_places)
     elif user_input == "A":
-        # for i in range(0, len(list_of_places)):
+        # for i in range(1, len(list_of_places + 1)):
         name_of_place = [str(input("Name: "))]
         country = [str(input("Country: "))]
         priority = [str(input("Priority: "))]
@@ -37,8 +35,9 @@ while user_input != "Q":
             print("Invalid input; enter a valid number")
             priority = [int(input("Priority: "))]
 
-        print("{0}.{1:<10} in {2:<10} priority {3:<10}".format(list_of_places, name_of_place[0], country[0],
-                                                               priority[0]), file=csv_file_name)
+        list_of_places = list_of_places + 1
+        print("{},{},{}".format(list_of_places, name_of_place[0], "", "", country[0],
+                                "", priority[0]), file=csv_file_name)
         csv_file_name.close()
     elif user_input == "M":
         print(file=csv_file_name)
@@ -50,6 +49,6 @@ while user_input != "Q":
         print("Input must be the options in the menu")
         user_input = str(input()).upper()
 
-    user_input = str(input(">>")).upper()
+user_input = str(input(">>")).upper()
 
 csv_file_name.close()
